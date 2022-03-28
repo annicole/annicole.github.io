@@ -1,4 +1,5 @@
 import React from "react";
+import arrowRigth from "../../assets/arrowRigth.svg";
 
 export default function TestimonialsTable({ testimonials }) {
   return (
@@ -6,27 +7,31 @@ export default function TestimonialsTable({ testimonials }) {
       <tbody>
         {testimonials.map((row) => {
           return (
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
               <td className="w-12 h-8 px-2">
                 <div className="flex items-center">
                   <img className="mx-2" src={row.track.icon_url} />
                 </div>
               </td>
-              <th
+
+              <td
                 scope="row"
-                className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
+                className="px-6 py-3 font-medium flex flex-row items-start whitespace-nowrap"
               >
-                {row.mentor.handle}
-              </th>
-              <td className="px-6 py-4">Sliver</td>
-              <td className="px-6 py-4">Laptop</td>
-              <td className="px-6 py-4">$2999</td>
-              <td className="px-6 py-4 text-right">
+                <img className="w-10 h-10 flex rounded-full" src={row.mentor.avatar_url} />
+                <div className="mx-4 flex flex-col items-start">
+                  <p className="font-medium text-base not-italic font-sans text-black">{row.mentor.handle}</p>
+                  <p className="font-normal text-sm not-italic font-sans text-indigo-800">on {row.exercise.title} in {row.track.title}</p>
+                </div>
+              </td>
+              <td className="px-6 py-3 font-normal text-sm not-italic font-sans text-slate-700">{row.content}</td>
+              <td className="px-6 py-3">Laptop</td>
+              <td className="px-6 py-3 text-right">
                 <a
                   href="#"
-                  className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                  className="hover:underline p-2"
                 >
-                  Edit
+                 <img className="mx-3" src={arrowRigth}/>
                 </a>
               </td>
             </tr>

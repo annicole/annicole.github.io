@@ -4,16 +4,18 @@ import { DropDownLanguage } from "./DropDownLanguage";
 import DropDownSort from "./DropDownSort";
 import Footer from "./Footer";
 import SearchInput from "./SearchInput";
+import TableLoading from "./TableLoading";
 import TestimonialsTable from "./TestimonialsTable";
 
 export default function Table() {
   const [errorState, setErrorState] = useState({ hasError: false });
   const [testimonials,setTestimonials] = useState([])
+  const [loading,setLoading] = useState(true)
  
   useEffect(()=>{
     getTestimonials().then(data=>{
       setTestimonials(data.results)
-      console.log(data.results)
+      setLoading(false)
     } )
     .catch(handleError);
   },[]);
@@ -41,7 +43,7 @@ export default function Table() {
           </div>
         </div>
       </div>
-      <TestimonialsTable testimonials={testimonials} />
+      {loading ? <TableLoading /> : <TestimonialsTable testimonials={testimonials}/> }
       <Footer />
     </div>
   );

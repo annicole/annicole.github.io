@@ -9,7 +9,6 @@ export default function Footer() {
           <img src={arrowBack} className="flex-none order-1" />
           <span className="flex-none order-2 mx-2 flex-grow-0 text-sm font-medium not-italic text-indigo-900">Previous</span>
       </button>
-
       <div></div>
       <button className="bg-white rounded-md border border-solid border-inherit shadow-[0_1px_0px_1px_rgba(203,201,217,0.6)] flex p-2 items-center">
           <img src={arrowNext} className="flex-none order-2" />
