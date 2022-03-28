@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+Styling
+A key criteria for this job role is how accurately you can replicate designs. You can access the Figma file with all the information you should need at https://www.figma.com/file/qvDOfGC4uLDUcjRDaVMIrU/Exercism-Front-end-Job-Project?node-id=0%3A1 (note: you need to be logged into Figma to see the comments). Note the comments on various components for more information.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ideally, you'll use Tailwind 3 for the CSS, but plain CSS is totally fine too.
 
-## Available Scripts
+Functionality
+The functionality should be implemented using React. Ideally, you'll use TypeScript, but JavaScript is fine too.
 
-In the project directory, you can run:
+Please provide some tests as well.
 
-### `npm start`
+The areas that should be implemented are:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Track selection:
+Clicking the track button (top-left) should open the track selector.
+Clicking on a track within the track selector should update the table accordingly and close the selector.
+The tracks should be filtered to only show the list of tracks on which you have given testimonials.
+Exercise filtering:
+Typing into the exercise box should filter the tracks.
+Consider reducing calls to the API while the user is still typing.
+Sorting:
+There are two sort options: oldest first or newest first.
+Pagination:
+Pagination should be implemented.
+Filtering should update pagination options (i.e. if there are only two pages of Ruby results then the pagination should only show two pages).
+Other notes:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+All filtering of the testimonials should be done at the server-side level via API calls.
+You are not expected to implement the functionality of the top-bar.
+API Calls
+To get data you can use Exercism's API. There are two endpoints, both which return JSON and neither of which need authentication:
 
-### `npm test`
+Tracks
+You can retrieve the list of all tracks from: https://exercism.org/api/v2/tracks
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Testimonials
+Access the testimonials from: https://exercism.org/api/v2/hiring/testimonials
 
-### `npm run build`
+You can use the following params to modify which records are returned:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+page: Specify to return a different page (e.g. 2) of the results (note: page 1 is the first page).
+track: Pass a complete track slug (e.g. python) to only return the Python track's testimonials.
+exercise: Pass a partial exercise name (e.g. ming) to only return the exercises that contain the word "ming".
+order: Specify either newest_first or oldest_first (default) to switch the order.
+A complete URL might be https://exercism.org/api/v2/hiring/testimonials?page=2&track=python&exercise=ming&order=newest_first.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The endpoint returns JSON with the following top-level keys:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+testimonials: An object containing information related to the page of testimonials that is to be rendered.
+results: The testimonials containing the relevant information to render on the UI.
+pagination: Pagination data to allow you to render the pagination section.
+tracks: A list of all tracks that this user has given testimonials on.
+track_counts: An object mapping tracks to the number of testimonials for that track.
