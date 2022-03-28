@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function SearchInput() {
+export default function SearchInput({handleChange}) {
   return (
     <div className="relative mt-1">
       <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -32,6 +32,7 @@ export default function SearchInput() {
       <input
         type="text"
         id="table-search"
+        onChange={handleChange}
         className="bg-slate-100 border rounded-md border-gray-300 text-gray-900 text-sm  block w-80 pl-10 p-2.5 focus:bg-white focus:border focus:border-indigo-400 focus:rounded focus:shadow-[0_0_2px_2px_rgba(46,87,232,0.25)] "
         placeholder="Filter by exercise title"
       />

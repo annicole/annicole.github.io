@@ -13,10 +13,8 @@ export default function TestimonialsTable({ testimonials }) {
                   <img className="mx-2" src={row.track.icon_url} />
                 </div>
               </td>
-
               <td
-                scope="row"
-                className="px-6 py-3 font-medium flex flex-row items-start whitespace-nowrap"
+                className="px-6 py-4 font-medium flex flex-row items-start whitespace-nowrap"
               >
                 <img className="w-10 h-10 flex rounded-full" src={row.mentor.avatar_url} />
                 <div className="mx-4 flex flex-col items-start">
