@@ -11,16 +11,20 @@ export default function Table() {
   const [errorState, setErrorState] = useState({ hasError: false });
   const [testimonials,setTestimonials] = useState([])
   const [loading,setLoading] = useState(true)
+  const [valueSort,setValueSort] = useState("oldest_first")
  
   useEffect(()=>{
-    getTestimonials().then(data=>{
+    getTestimonials(1,valueSort).then(data=>{
       setTestimonials(data.results)
       setLoading(false)
     } )
     .catch(handleError);
-  },[]);
+  },[valueSort]);
 
-  const onHadleSortChange = () => {};
+  const onHadleSortChange = (e) => {
+    setLoading(true)
+    setValueSort(e.target.value)
+  };
 
   const handleError = (err) => {
     setErrorState({ hasError: true, message: err.message });
@@ -36,9 +40,9 @@ export default function Table() {
           </div>
           <div className="flex">
             <DropDownSort
-              name="recent"
-              value="recent"
-              onChange={onHadleSortChange}
+              name="sortDropDown"
+              value={valueSort}
+              handleChange={onHadleSortChange}
             />
           </div>
         </div>

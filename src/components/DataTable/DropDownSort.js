@@ -8,8 +8,8 @@ export default function DropDownSort({ name, value, handleChange }) {
         value={value}
         onChange={handleChange}
       >
-        <option value="recent">Sort by Most recent</option>
-        <option value="lime">Lime</option>
+        <option value="newest_first">Sort by Most recent</option>
+        <option value="oldest_first">Sort by Last</option>
       </select>
   );
 }
