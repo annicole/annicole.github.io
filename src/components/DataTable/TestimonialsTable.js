@@ -3,6 +3,7 @@ import arrowRigth from "../../assets/arrowRigth.svg";
 
 export default function TestimonialsTable({ testimonials }) {
   return (
+    <div className="overflow-y-scroll max-h-80">
     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
       <tbody>
         {testimonials.map((row) => {
@@ -14,7 +15,7 @@ export default function TestimonialsTable({ testimonials }) {
                 </div>
               </td>
               <td
-                className="px-6 py-4 font-medium flex flex-row items-start whitespace-nowrap"
+                className="px-6 py-3 font-medium flex flex-row items-start whitespace-nowrap"
               >
                 <img className="w-10 h-10 flex rounded-full" src={row.mentor.avatar_url} />
                 <div className="mx-4 flex flex-col items-start">
@@ -22,9 +23,9 @@ export default function TestimonialsTable({ testimonials }) {
                   <p className="font-normal text-sm not-italic font-sans text-indigo-800">on {row.exercise.title} in {row.track.title}</p>
                 </div>
               </td>
-              <td className="px-6 py-3 font-normal text-sm not-italic font-sans text-slate-700">{row.content}</td>
-              <td className="px-6 py-3">Laptop</td>
-              <td className="px-6 py-3 text-right">
+              <td className="px-6 py-2 font-normal text-sm not-italic font-sans text-slate-700">{row.content}</td>
+              <td className="px-6 py-2">Laptop</td>
+              <td className="px-6 py-2 text-right">
                 <a
                   href="#"
                   className="hover:underline p-2"
@@ -37,5 +38,6 @@ export default function TestimonialsTable({ testimonials }) {
         })}
       </tbody>
     </table>
+    </div>
   );
 }

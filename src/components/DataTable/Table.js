@@ -42,7 +42,6 @@ export default function Table() {
   };
 
   const onChangePage = (next) =>{
-    console.log('entro')
     if(!pagination.current_page && page + next <= 0 ) return;
     if(!pagination.current_page && page + next >= pagination.total_pages) return;
     setPage(page +next)
@@ -57,7 +56,7 @@ export default function Table() {
             <DropDownLanguage />
             <SearchInput handleChange={onHandleInputChange} />
           </div>
-          <div className="flex">
+          <div className="flex mr-3">
             <DropDownSort
               name="sortDropDown"
               value={valueSort}
@@ -67,7 +66,7 @@ export default function Table() {
         </div>
       </div>
       {loading ? <TableLoading /> : <TestimonialsTable testimonials={testimonials}/> }
-      <Footer onChangePage={onChangePage} />
+      <Footer onChangePage={onChangePage} page={page}  total={pagination.total_pages} />
     </div>
   );
 }
