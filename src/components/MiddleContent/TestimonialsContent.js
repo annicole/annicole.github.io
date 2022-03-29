@@ -2,6 +2,7 @@ import React from "react";
 
 import testimonials1 from "../../assets/testimonials1.svg";
 import zigzagIcon from "../../assets/zigzagIcon.svg";
+import Tag from "../utils/Tag";
 
 export default function TestimonialsContent() {
   return (
@@ -10,11 +11,7 @@ export default function TestimonialsContent() {
         <img src={testimonials1} />
       </span>
       <div className="mt-4 flex flex-row justify-center items-center ">
-        <span className="flex-none order-1 flex-grow mx-4  text-3x box-border border-solid border rounded-[100px] ">
-          <p className="font-normal text-xs flex-grow-0 order-1 mx-2 text-indigo-800">
-            47
-          </p>
-        </span>
+        <Tag number={47} />
         <span className="font-bold text-center font-sans text-3xl">
           Testimonials I’ve left
         </span>

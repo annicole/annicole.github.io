@@ -15,15 +15,32 @@ export default function Table() {
   const [textSearch,setTextSearch] = useState("")
   const [page,setPage] = useState(1)
   const [pagination,setPagination] = useState({})
+  const [tracks,setTracks] = useState({
+    "c": 55,
+      "cpp": 9,
+      "csharp": 101,
+      "fsharp": 59,
+      "go": 109,
+      "java": 52,
+      "javascript": 184,
+      "php": 8,
+      "python": 307,
+      "ruby": 51,
+      "rust": 917,
+      "scala": 24,
+      "typescript": 140
+  })
  
   useEffect(()=>{
+    console.log('fetch')
     getTestimonials(page,valueSort,textSearch).then(data=>{
       setTestimonials(data.results)
       setPagination(data.pagination)
+      //setTracks({...data.track_counts,All:data.pagination.total_pages})
       setLoading(false)
     } )
     .catch(handleError);
-  },[valueSort,textSearch,pagination]);
+  },[page,textSearch,valueSort]);
 
   const onHadleSortChange = (e) => {
     setLoading(true)
@@ -53,7 +70,7 @@ export default function Table() {
       <div className="p-4 border-b">
         <div className="flex flex-row justify-between flex-nowrap">
           <div className="flex flex-row flex-1">
-            <DropDownLanguage />
+            <DropDownLanguage tracks={new Map(Object.entries(tracks))} />
             <SearchInput handleChange={onHandleInputChange} />
           </div>
           <div className="flex mr-3">
