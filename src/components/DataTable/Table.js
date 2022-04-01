@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { getTestimonials } from "../../api/testimonials";
-import { DropDownLanguage } from "./DropDownLanguage";
-import DropDownSort from "./DropDownSort";
-import Footer from "./Footer";
-import SearchInput from "./SearchInput";
+import DropDownLanguage  from "../HeaderTable/DropDownLanguage";
+import DropDownSort from "../HeaderTable/DropDownSort";
+import Footer from "../FooterTable/Footer";
+import SearchInput from "../HeaderTable/SearchInput";
 import TableLoading from "./TableLoading";
 import TestimonialsTable from "./TestimonialsTable";
 
@@ -70,7 +70,7 @@ export default function Table() {
       <div className="p-4 border-b">
         <div className="flex flex-row justify-between flex-nowrap">
           <div className="flex flex-row flex-1">
-            <DropDownLanguage tracks={new Map(Object.entries(tracks))} />
+            <DropDownLanguage tracks={tracks} />
             <SearchInput handleChange={onHandleInputChange} />
           </div>
           <div className="flex mr-3">
