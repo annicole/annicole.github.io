@@ -15,28 +15,14 @@ export default function Table() {
   const [textSearch,setTextSearch] = useState("")
   const [page,setPage] = useState(1)
   const [pagination,setPagination] = useState({})
-  const [tracks,setTracks] = useState({
-    "c": 55,
-      "cpp": 9,
-      "csharp": 101,
-      "fsharp": 59,
-      "go": 109,
-      "java": 52,
-      "javascript": 184,
-      "php": 8,
-      "python": 307,
-      "ruby": 51,
-      "rust": 917,
-      "scala": 24,
-      "typescript": 140
-  })
+  const [tracks,setTracks] = useState([])
  
   useEffect(()=>{
-    console.log('fetch')
     getTestimonials(page,valueSort,textSearch).then(data=>{
       setTestimonials(data.results)
       setPagination(data.pagination)
-      //setTracks({...data.track_counts,All:data.pagination.total_pages})
+      const tracksObj={...data.track_counts,All:data.pagination.total_pages};
+      setTracks(Object.entries(tracksObj).sort())
       setLoading(false)
     } )
     .catch(handleError);
@@ -50,7 +36,6 @@ export default function Table() {
   const onHandleInputChange = (event) =>{
     event.preventDefault();
     const text = event.target.value;
-    console.log(event.target.value)
     setTextSearch(text);
   }
 
@@ -62,7 +47,6 @@ export default function Table() {
     if(!pagination.current_page && page + next <= 0 ) return;
     if(!pagination.current_page && page + next >= pagination.total_pages) return;
     setPage(page +next)
-    console.log(page)
   }
 
   return (

@@ -1,9 +1,11 @@
 import React from "react";
-export default function RowLanguage() {
+import allLanguages from "../../assets/allLanguages.svg";
+import Tag from "../utils/Tag";
+
+export default function RowLanguage({language,value}) {
   return (
-    <li>
+    <li key={language}>
       <button
-        key={key}
         className="flex flex-row justify-between items-center w-full px-3 py-2 hover:bg-gray-100"
       >
         <input
@@ -16,9 +18,9 @@ export default function RowLanguage() {
         ></input>
         <span className="flex flex-row items-center w-full">
           <img className="mx-3" src={allLanguages} />
-          <span className="text-base font-medium not-italic"> {key} </span>
+          <span className="text-base font-medium not-italic">{language} </span>
         </span>
-        <Tag number="1" />
+        <Tag number={value} />
       </button>
     </li>
   );

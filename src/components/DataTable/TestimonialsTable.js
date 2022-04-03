@@ -1,14 +1,26 @@
 import React from "react";
 import arrowRigth from "../../assets/arrowRigth.svg";
+import { Link } from "react-router-dom"
+import RowDate from "./RowDate";
 
 export default function TestimonialsTable({ testimonials }) {
+
+  const handleRow = (id)=>{
+    return <Link
+    to={{
+      pathname: "/testimonial",
+      id: id
+    }}
+  />
+  } 
+
   return (
     <div className="overflow-y-scroll max-h-80">
     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
       <tbody>
         {testimonials.map((row) => {
           return (
-            <tr key={row.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
+            <tr  onClick={()=>handleRow(row.id)} key={row.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
               <td className="w-12 h-8 px-2">
                 <div className="flex items-center">
                   <img className="mx-2" src={row.track.icon_url} />
@@ -24,14 +36,11 @@ export default function TestimonialsTable({ testimonials }) {
                 </div>
               </td>
               <td className="px-6 py-2 font-normal text-sm not-italic font-sans text-slate-700">{row.content}</td>
-              <td className="px-6 py-2">Laptop</td>
+              <td className="pl-6 py-2 w-28">
+                <RowDate date={row.created_at} />
+              </td>
               <td className="px-6 py-2 text-right">
-                <a
-                  href="#"
-                  className="hover:underline p-2"
-                >
                  <img className="mx-3" src={arrowRigth}/>
-                </a>
               </td>
             </tr>
           );

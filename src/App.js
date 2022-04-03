@@ -6,7 +6,7 @@ import TestimonialsContent from './components/MiddleContent/TestimonialsContent'
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Header/>
       <TestimonialsContent />
       <Table />
