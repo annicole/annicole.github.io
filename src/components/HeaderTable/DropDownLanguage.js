@@ -4,7 +4,7 @@ import languageIcon from "../../assets/languageIcon.svg";
 
 import RowLanguage from "./RowLanguage";
 
-export default function DropDownLanguage({ tracks }) {
+export default function DropDownLanguage({ tracks,selectedTrack,onTrackChange }) {
   const [dropdown, setDropdown] = useState(false);
   const toggleOpen = () => setDropdown(!dropdown);
   return (
@@ -28,7 +28,7 @@ export default function DropDownLanguage({ tracks }) {
         <ul className="py-1 text-sm text-gray-700 dark:text-gray-200 overflow-y-scroll max-h-64 ">
           {tracks.map(track => {
             return (
-                <RowLanguage language={track[0]} value={track[1]} />
+                <RowLanguage language={track[0]} value={track[1]} selectedTrack={selectedTrack} onTrackChange={onTrackChange}/>
             );
           })}
         </ul>

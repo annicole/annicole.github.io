@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getTestimonials } from "../../api/testimonials";
+import { getTestimonials } from "../../api/api";
 import DropDownLanguage  from "../HeaderTable/DropDownLanguage";
 import DropDownSort from "../HeaderTable/DropDownSort";
 import Footer from "../FooterTable/Footer";
@@ -16,9 +16,10 @@ export default function Table() {
   const [page,setPage] = useState(1)
   const [pagination,setPagination] = useState({})
   const [tracks,setTracks] = useState([])
+  const [selectedTrack,setSelectedTrack] = useState("All")
  
   useEffect(()=>{
-    getTestimonials(page,valueSort,textSearch).then(data=>{
+    getTestimonials(page,valueSort,textSearch,selectedTrack).then(data=>{
       setTestimonials(data.results)
       setPagination(data.pagination)
       const tracksObj={...data.track_counts,All:data.pagination.total_pages};
@@ -26,7 +27,7 @@ export default function Table() {
       setLoading(false)
     } )
     .catch(handleError);
-  },[page,textSearch,valueSort]);
+  },[page,textSearch,valueSort,selectedTrack]);
 
   const onHadleSortChange = (e) => {
     setLoading(true)
@@ -49,12 +50,16 @@ export default function Table() {
     setPage(page +next)
   }
 
+  const onTrackChange = (track) =>{
+    setSelectedTrack(track)
+  }
+
   return (
     <div className="relative overflow-x-auto rounded-lg shadow-[0_4px_42px_0px_rgba(79,114,205,0.15)] mx-6 mt-3 mb-6">
       <div className="p-4 border-b">
         <div className="flex flex-row justify-between flex-nowrap">
           <div className="flex flex-row flex-1">
-            <DropDownLanguage tracks={tracks} />
+            <DropDownLanguage tracks={tracks} selectedTrack={selectedTrack}  onTrackChange ={onTrackChange}/>
             <SearchInput handleChange={onHandleInputChange} />
           </div>
           <div className="flex mr-3">
