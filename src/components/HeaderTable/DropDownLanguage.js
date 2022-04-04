@@ -4,8 +4,7 @@ import languageIcon from "../../assets/languageIcon.svg";
 
 import RowLanguage from "./RowLanguage";
 
-export default function DropDownLanguage({ tracks,selectedTrack,onTrackChange }) {
-  const [dropdown, setDropdown] = useState(false);
+export default function DropDownLanguage({ tracks,selectedTrack,onTrackChange ,dropdown,setDropdown}) {
   const toggleOpen = () => setDropdown(!dropdown);
   return (
     <>

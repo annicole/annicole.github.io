@@ -15,7 +15,7 @@ export default function RowLanguage({language,value,selectedTrack,onTrackChange}
   return (
     <li key={language}>
       <button
-        className="flex flex-row justify-between items-center w-full px-3 py-2 hover:bg-gray-100"
+        className={`${selectedTrack === language ? 'bg-slate-100' : ''} flex flex-row justify-between items-center w-full px-3 py-2 hover:bg-gray-100`}
         onClick={()=>onTrackChange(language)}
       >
         <input
@@ -24,7 +24,7 @@ export default function RowLanguage({language,value,selectedTrack,onTrackChange}
           name="countries"
           value="USA"
           checked={selectedTrack === language}
-          className="w-6 h-6 m-3 p-2 bg-gray-100 rounded-full border-gray-300 "
+          className="w-6 h-6 m-3 p-2 bg-gray-100 rounded-full border-gray-300 checked:bg-black "
         ></input>
         <span className="flex flex-row items-center w-full">
           {getImage(language)}
