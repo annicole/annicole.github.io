@@ -1,6 +1,6 @@
 import React from "react";
 export default function NumberPage({ page, totalPages }) {
-    console.log(totalPages)
+
   return (
     <ul className="flex flex-row items-center justify-between ">
       <li>

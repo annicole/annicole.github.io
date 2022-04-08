@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getTestimonials } from "../../api/api";
+import { getTracks } from "../../api/api";
 import DropDownLanguage from "../HeaderTable/DropDownLanguage";
 import DropDownSort from "../HeaderTable/DropDownSort";
 import Footer from "../FooterTable/Footer";
@@ -18,17 +19,14 @@ export default function Table() {
   const [tracks, setTracks] = useState([]);
   const [selectedTrack, setSelectedTrack] = useState("All");
   const [dropdown, setDropdown] = useState(false);
+  let tracksApi = [];
 
-  useEffect(() => {
-    getTestimonials(page, valueSort, textSearch, selectedTrack)
+  useEffect(async () => {
+    await getTestimonials(page, valueSort, textSearch, selectedTrack)
       .then((data) => {
         setTestimonials(data.results);
         setPagination(data.pagination);
-        const tracksObj = {
-          ...data.track_counts,
-          All: data.pagination.total_count,
-        };
-        setTracks(Object.entries(tracksObj).sort());
+        setTracks(data.track_counts);
         setLoading(false);
       })
       .catch(handleError);
@@ -57,6 +55,7 @@ export default function Table() {
   };
 
   const onTrackChange = (track) => {
+    console.log(track)
     setLoading(true);
     setSelectedTrack(track);
     setDropdown(false);
@@ -73,6 +72,7 @@ export default function Table() {
               onTrackChange={onTrackChange}
               dropdown={dropdown}
               setDropdown={setDropdown}
+              all={pagination.total_count}
             />
             <SearchInput handleChange={onHandleInputChange} />
           </div>

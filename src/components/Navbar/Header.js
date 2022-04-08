@@ -15,7 +15,7 @@ export default function Header() {
       <div className="container flex whitespace-nowrap t items-center mx-auto justify-between">
         <div className="flex items-center justify-between">
           <a href="" className="flex items-center py-2.5">
-            <img src={logo} class="mr-3 h-6 sm:h-9 pt-2" />
+            <img src={logo} className="mr-3 h-6 sm:h-9 pt-2" />
             <img
               className="self-center text-xl font-semibold whitespace-nowrap"
               src={ExercismText}

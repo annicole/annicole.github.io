@@ -1,11 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import arrowDown from "../../assets/arrowDown.svg";
 import languageIcon from "../../assets/languageIcon.svg";
-
+import { getTracks } from "../../api/api";
 import RowLanguage from "./RowLanguage";
+import allLanguages from "../../assets/allLanguages.svg";
 
-export default function DropDownLanguage({ tracks,selectedTrack,onTrackChange ,dropdown,setDropdown}) {
+export default function DropDownLanguage({
+  tracks,
+  selectedTrack,
+  onTrackChange,
+  dropdown,
+  setDropdown,
+  all
+}) {
   const toggleOpen = () => setDropdown(!dropdown);
+  const [errorState, setErrorState] = useState({ hasError: false });
+  const [tracksApi, setTracksApi] = useState([]);
+
+  useEffect(() => {
+    getTracks()
+      .then((data) => {
+        let res = data
+          .filter((track) => {
+            return tracks.hasOwnProperty(track.slug);
+          })
+          .map((track) => {
+            return { ...track, counter: tracks[track.slug] };
+          });
+        console.log(res);
+        setTracksApi(res);
+      })
+      .catch(handleError);
+  }, [tracks]);
+
+  const handleError = (err) => {
+    console.error(err);
+    setErrorState({ hasError: true, message: err.message });
+  };
+
   return (
     <>
       <div className="mr-3">
@@ -25,9 +57,25 @@ export default function DropDownLanguage({ tracks,selectedTrack,onTrackChange ,d
         } z-10 absolute mt-12 w-80 h-72 p-2 bg-white rounded-lg divide-y divide-gray-100 shadow`}
       >
         <ul className="py-1 text-sm text-gray-700 dark:text-gray-200 overflow-y-scroll max-h-64 ">
-          {tracks.map(track => {
+          <RowLanguage
+            language={"All"}
+            icon={allLanguages}
+            value={all}
+            slug={'All'}
+            selectedTrack={selectedTrack}
+            onTrackChange={onTrackChange}
+          />
+          {tracksApi.map((track) => {
             return (
-                <RowLanguage language={track[0]} value={track[1]} selectedTrack={selectedTrack} onTrackChange={onTrackChange}/>
+              <RowLanguage
+                key={track.slug}
+                track={track.title}
+                slug={track.slug}
+                icon={track.icon_url}
+                value={track.counter}
+                selectedTrack={selectedTrack}
+                onTrackChange={onTrackChange}
+              />
             );
           })}
         </ul>
