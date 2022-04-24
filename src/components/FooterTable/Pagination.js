@@ -19,12 +19,12 @@ export default function Pagination({
 
   return (
     <ul className="flex flex-row items-center justify-between ">
-      {paginationRange?.map((pageNumber) => {
+      {paginationRange?.map((pageNumber,i) => {
         if (pageNumber === DOTS) {
-          return <li className="">&#8230;</li>;
+          return <li  key={i} className="text-sm font-medium text-indigo-800 mx-3">&#8230;</li>;
         }
         return (
-          <li>
+          <li key={i} className="mx-1">
             <button
               className={` ${
                 currentPage === pageNumber

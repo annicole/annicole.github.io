@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect,  useState } from "react";
 import arrowDown from "../../assets/arrowDown.svg";
 import languageIcon from "../../assets/languageIcon.svg";
 import { getTracks } from "../../api/api";
@@ -16,6 +16,7 @@ export default function DropDownLanguage({
   const toggleOpen = () => setDropdown(!dropdown);
   const [errorState, setErrorState] = useState({ hasError: false });
   const [tracksApi, setTracksApi] = useState([]);
+  const [totalCount,setTotalcount]= useState(0)
 
   useEffect(() => {
     getTracks()
@@ -28,9 +29,14 @@ export default function DropDownLanguage({
             return { ...track, counter: tracks[track.slug] };
           });
         setTracksApi(res);
+
+        let total = res.reduce((sum,i)=>{
+          return sum + i.counter;
+        },0);
+        setTotalcount(total)
       })
       .catch(handleError);
-  }, [tracks]);
+  }, [tracks.length]);
 
   const handleError = (err) => {
     console.error(err);
@@ -59,7 +65,7 @@ export default function DropDownLanguage({
           <RowLanguage
             language={"All"}
             icon={allLanguages}
-            value={all}
+            value={totalCount}
             slug={'All'}
             selectedTrack={selectedTrack}
             onTrackChange={onTrackChange}
@@ -68,7 +74,7 @@ export default function DropDownLanguage({
             return (
               <RowLanguage
                 key={track.slug}
-                track={track.title}
+                language={track.title}
                 slug={track.slug}
                 icon={track.icon_url}
                 value={track.counter}
