@@ -23,6 +23,7 @@ export default function RowLanguage({
           name="countries"
           value="USA"
           checked={selectedTrack === slug}
+          readOnly={true}
           className="w-6 h-6 m-3 p-2 bg-gray-100 rounded-full border-gray-300 checked:bg-black "
         ></input>
         <span className="flex flex-row items-center w-full">

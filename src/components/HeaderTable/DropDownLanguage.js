@@ -27,7 +27,6 @@ export default function DropDownLanguage({
           .map((track) => {
             return { ...track, counter: tracks[track.slug] };
           });
-        console.log(res);
         setTracksApi(res);
       })
       .catch(handleError);

@@ -19,7 +19,6 @@ export default function Table() {
   const [tracks, setTracks] = useState([]);
   const [selectedTrack, setSelectedTrack] = useState("All");
   const [dropdown, setDropdown] = useState(false);
-  let tracksApi = [];
 
   useEffect(async () => {
     await getTestimonials(page, valueSort, textSearch, selectedTrack)
@@ -47,15 +46,12 @@ export default function Table() {
     setErrorState({ hasError: true, message: err.message });
   };
 
-  const onChangePage = (next) => {
-    if (!pagination.current_page && page + next <= 0) return;
-    if (!pagination.current_page && page + next >= pagination.total_pages)
-      return;
-    setPage(page + next);
+  const onPageChange = (changePage) => {
+    setPage(changePage);
+    setLoading(true)
   };
 
   const onTrackChange = (track) => {
-    console.log(track)
     setLoading(true);
     setSelectedTrack(track);
     setDropdown(false);
@@ -91,8 +87,9 @@ export default function Table() {
         <TestimonialsTable testimonials={testimonials} />
       )}
       <Footer
-        onChangePage={onChangePage}
-        page={page}
+        onPageChange={onPageChange}
+        loading={loading}
+        currentPage={page}
         totalPages={pagination.total_pages}
       />
     </div>
