@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/hiring-front-end/static/css/main.2c57b447.css",
+    "main.js": "/hiring-front-end/static/js/main.5cf21e58.js",
+    "static/js/787.93da7b4c.chunk.js": "/hiring-front-end/static/js/787.93da7b4c.chunk.js",
+    "static/media/avatar.svg": "/hiring-front-end/static/media/avatar.b2a7ff23fe8d3b4a20867a676c5960ea.svg",
+    "static/media/navBar.svg": "/hiring-front-end/static/media/navBar.79e4f391f4fd68508baddbbbe2aa177b.svg",
+    "static/media/badge.svg": "/hiring-front-end/static/media/badge.0eaac0e203a9e531cfcd1b00eaddbba7.svg",
+    "static/media/languageIcon.svg": "/hiring-front-end/static/media/languageIcon.8eb9b4319c6aa4c77368791da9b33fa1.svg",
+    "static/media/allLanguages.svg": "/hiring-front-end/static/media/allLanguages.bbf5c3a23831992d43efd03b0d3b7ba6.svg",
+    "static/media/exercismText.svg": "/hiring-front-end/static/media/exercismText.432d73076b86065359291b6f4f487479.svg",
+    "static/media/exercismIcon.svg": "/hiring-front-end/static/media/exercismIcon.e6fb17acd810a9e9ef3f02e1e5811222.svg",
+    "static/media/media1.svg": "/hiring-front-end/static/media/media1.60771b6979276062a3a5ab944cf1fefa.svg",
+    "static/media/notification.svg": "/hiring-front-end/static/media/notification.c498e37ec8d8b3f9d472c15f2581fcf7.svg",
+    "static/media/testimonials1.svg": "/hiring-front-end/static/media/testimonials1.4dc046168c29582a65b5c51ce94e7343.svg",
+    "index.html": "/hiring-front-end/index.html",
+    "static/media/media2.svg": "/hiring-front-end/static/media/media2.370b1c1ea4ad6d383809954033bed36f.svg",
+    "static/media/loadingCircle.svg": "/hiring-front-end/static/media/loadingCircle.415497b6179e8a690f90022664f12b18.svg",
+    "static/media/doots.svg": "/hiring-front-end/static/media/doots.d7e3cb36419219d263e05f61d9a5e76f.svg",
+    "static/media/arrowBack.svg": "/hiring-front-end/static/media/arrowBack.e834d10b8731226efe59e56c9622a476.svg",
+    "static/media/arrowDown.svg": "/hiring-front-end/static/media/arrowDown.347a8b68b426874e5ad578a61778288a.svg",
+    "static/media/arrowRigth.svg": "/hiring-front-end/static/media/arrowRigth.8a70239fba6eef4b69d0b236262046e1.svg",
+    "static/media/arrowNext.svg": "/hiring-front-end/static/media/arrowNext.cbaaa491d2c6829f1989ee4269f6a1a3.svg",
+    "static/media/zigzagIcon.svg": "/hiring-front-end/static/media/zigzagIcon.04134f2236407ab37555b19ece41fee6.svg",
+    "main.2c57b447.css.map": "/hiring-front-end/static/css/main.2c57b447.css.map",
+    "main.5cf21e58.js.map": "/hiring-front-end/static/js/main.5cf21e58.js.map",
+    "787.93da7b4c.chunk.js.map": "/hiring-front-end/static/js/787.93da7b4c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2c57b447.css",
+    "static/js/main.5cf21e58.js"
+  ]
+}
